@@ -106,11 +106,12 @@ export async function deleteInvoice(id: string) {
 export async function authenticate(
   prevState: string | undefined,
   formData: FormData,
-  ) {
-  console.log(formData)
+) {
+  console.log('Form Data:', formData);
   try {
     await signIn('credentials', formData);
   } catch (error) {
+    console.error('Authentication Error:', error);
     if (error instanceof AuthError) {
       switch (error.type) {
         case 'CredentialsSignin':
